@@ -43,7 +43,7 @@ Or just visit your GitHub Pages URL after enabling it in repo settings.
 1. Push this repo to GitHub
 2. Go to **Settings → Pages**
 3. Set source to **main branch / root**
-4. Your app is live at `https://YOUR_USERNAME.github.io/weather-app`
+4. Your app is live at `[https://YOUR_USERNAME.github.io/weather-app](https://shyamraghu123.github.io/weather-app/)`
 
 ## Project structure
 
