@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WeatherNow — Live Forecast</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css" />
+</head>
+<body>
+  <div class="app">
+
+    <header class="header">
+      <div class="logo"><i class="ti ti-cloud-bolt"></i> WeatherNow</div>
+      <div class="search-wrap">
+        <i class="ti ti-search search-icon"></i>
+        <input type="text" id="cityInput" placeholder="Search city…" autocomplete="off" />
+        <button id="searchBtn" onclick="fetchWeather()">Go</button>
+      </div>
+    </header>
+
+    <div id="errorMsg" class="error-msg" style="display:none">
+      <i class="ti ti-alert-circle"></i> <span id="errorText">City not found. Try another name.</span>
+    </div>
+
+    <div id="loadingMsg" class="loading-msg" style="display:none">
+      <div class="spinner"></div> Fetching live data…
+    </div>
+
+    <main id="mainContent" style="display:none">
+
+      <section class="hero">
+        <div class="hero-left">
+          <p class="city-name" id="cityName">—</p>
+          <p class="weather-desc" id="wDesc">—</p>
+          <p class="updated" id="wUpdated">—</p>
+          <div class="aqi-badge" id="aqiBadge" style="display:none">
+            <i class="ti ti-leaf"></i> <span id="aqiText">—</span>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="big-temp" id="wTemp">—</div>
+          <div class="feels" id="wFeel">—</div>
+          <div class="icon-wrap"><i class="ti hero-icon" id="heroIcon"></i></div>
+        </div>
+      </section>
+
+      <section class="stats-grid">
+        <div class="stat-card">
+          <div class="slbl"><i class="ti ti-droplet"></i> Humidity</div>
+          <div class="sval" id="sHum">—</div>
+        </div>
+        <div class="stat-card">
+          <div class="slbl"><i class="ti ti-wind"></i> Wind</div>
+          <div class="sval" id="sWind">—</div>
+        </div>
+        <div class="stat-card">
+          <div class="slbl"><i class="ti ti-eye"></i> Visibility</div>
+          <div class="sval" id="sVis">—</div>
+        </div>
+        <div class="stat-card">
+          <div class="slbl"><i class="ti ti-gauge"></i> Pressure</div>
+          <div class="sval" id="sPres">—</div>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="sec-title">Hourly forecast</div>
+        <div class="hourly-scroll" id="hourlyEl"></div>
+      </section>
+
+      <section class="section-block">
+        <div class="sec-title">7-day forecast</div>
+        <div class="forecast-list" id="forecastEl"></div>
+      </section>
+
+      <section class="bottom-grid">
+        <div class="b-card">
+          <div class="blbl"><i class="ti ti-sun"></i> UV Index</div>
+          <div class="bval" id="uvVal">—</div>
+          <div class="uv-bar"><div class="uv-dot" id="uvDot" style="left:0%"></div></div>
+          <div class="uv-lbl" id="uvLbl">—</div>
+        </div>
+        <div class="b-card">
+          <div class="blbl"><i class="ti ti-sunrise"></i> Sun</div>
+          <div class="sun-row">
+            <div><div class="sunlbl">Sunrise</div><div class="sunval" id="sunRise">—</div></div>
+            <div style="text-align:right"><div class="sunlbl">Sunset</div><div class="sunval" id="sunSet">—</div></div>
+          </div>
+          <div class="sun-row" style="margin-top:10px">
+            <div class="sunlbl">Day length</div>
+            <div class="sunval" id="sunLen">—</div>
+          </div>
+        </div>
+        <div class="b-card">
+          <div class="blbl"><i class="ti ti-cloud-rain"></i> Precipitation</div>
+          <div class="bval" id="precip">—</div>
+          <div class="sunlbl" id="precipDesc" style="margin-top:4px">Today's total</div>
+        </div>
+        <div class="b-card">
+          <div class="blbl"><i class="ti ti-temperature"></i> Dew point</div>
+          <div class="bval" id="dewPt">—</div>
+          <div class="sunlbl" id="dewDesc" style="margin-top:4px">—</div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      Data from <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo</a> &amp; <a href="https://geocoding-api.open-meteo.com" target="_blank" rel="noopener">Open-Meteo Geocoding</a> — free &amp; open source APIs.
+    </footer>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
